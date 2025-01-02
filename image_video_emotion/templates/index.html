@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block body %}
+<script> 
+  const button = document.getElementById('run-button'); 
+  button.addEventListener('click', () => { 
+    fetch('/run-code', {method: 'POST'}) 
+        .then(response => response.text()) 
+        .then(text => console.log(text)); 
+  }); 
+
+  
+  </script>
+
+<style>
+    .float-container {
+      padding: 100px;
+    }
+    .float-child {
+      padding: 50px;
+      float: left;
+    }
+    .card {
+      
+      width: 100%;
+    }
+    .card-img-top {
+      border: 3px solid black;
+    }
+    .box {
+      width: 520px;
+      height: 580px;
+      background: lawngreen;
+      border: 3px solid black;
+      text-align: center;
+      padding: 30px;
+    }
+    .btn {
+      display: block;
+      width: 100px;
+      height: 40px;
+      background: darkmagenta;
+      color: #fff;
+      position: relative;
+      border-radius: 3px;
+      border: 0;
+      transition: all 0.3s ease-in-out;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: gold;
+      box-shadow: 0 3px 0 0 deeppink;
+    }
+    .btn1 {
+      left: 320px;
+      top: -40px;
+    }
+    .btn2 {
+      top: -5px;
+      left: 180px;
+    }
+  </style>
+
+<section id="hero">
+  <div class="hero container">
+    <div>
+      <h5>Welcome to <span></span></h5>
+      <h5>Multi Modal Emotion<span></span></h5>
+      <h5>A WebApp to detect emotions from image and video <span></span></h5>
+    </div>
+  </div>
+</section>
+
+
+<div class="float-container">
+  <div class="float-child">
+    <div class="box">
+      <div class="card">
+        <div class="view overlay">
+          <img
+            class="card-img-top"
+            src="{{ url_for('static', filename='img.gif') }}"
+            alt="Card image cap"
+            width="450"
+            height="400"
+          />
+          <h2 class="card-title">Image Emotion</h2>
+          <form
+            method="POST"
+            enctype="multipart/form-data"
+            action="{{url_for('uploadFile')}}"
+          >
+            <input
+              type="file"
+              class="upload"
+              id="myFile"
+              name="uploaded-file"
+            />
+            <input type="submit" class="btn btn1 submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="box">
+      <div class="card">
+        <div class="view overlay">
+          <img
+            class="card-img-top"
+            src="{{ url_for('static', filename='camera.gif') }}"
+            alt="Card image cap"
+            width="450"
+            height="400"
+          />
+          <h2 class="card-title">Real Time Video Emotion</h2>
+          <form
+            method="POST"
+            enctype="multipart/form-data"
+            action="{{url_for('run_code')}}"
+          >
+            <input type="submit" class="btn btn2 submit" id="run-button" value="Run" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock body %}
