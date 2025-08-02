@@ -1,0 +1,8 @@
+Django>=4.0
+gunicorn
+tensorflow
+opencv-python
+numpy
+librosa
+tensorflow
+...

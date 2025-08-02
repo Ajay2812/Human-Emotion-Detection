@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Result</title>
+  <link rel="stylesheet" href="{% static 'styles/result.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Lottie player for animation (optional) -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader-wrapper"><div class="loader"></div></div>
+
+  <!-- Emotion Result -->
+  <div class="result-container">
+    {% if input_type == "image" %}
+      <h2>Predicted Emotion: <span>{{ emotion }}</span></h2>
+      <img src="{{ image_url }}" class="img-fluid mt-3" alt="Result Image">
+    {% elif input_type == "text" or input_type == "audio" %}
+      <h2>Predicted Emotion: <span>{{ emotion }}</span></h2>
+    {% elif input_type == "video" %}
+      <h2>Video Prediction Processed</h2>
+      <p>Check console or video window.</p>
+    {% else %}
+      <p>No emotion detected.</p>
+    {% endif %}
+
+    <!-- Back Button -->
+    <br/><a href="{% url 'main' %}" class="back-btn">Back to Main</a>
+  </div>
+
+  <!-- Confetti for Happy -->
+  {% if emotion%}
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      setTimeout(() => {
+        confetti({
+          particleCount: 300,
+          spread: 120,
+          origin: { y: 0.6 }
+        });
+      }, 500);
+    </script>
+  {% endif %}
+
+  <script>
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+</script>

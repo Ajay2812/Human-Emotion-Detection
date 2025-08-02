@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Model Emotion Detection</title>
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+</head>
+<body>
+    <section class="hero">
+        <div class="overlay">
+            <div class="hero-content">
+                <h2>Welcome to</h2>
+                <h1>Multi Model Emotion</h1>
+                <p>A WebApp to detect emotions from multiple models</p>
+                <a href="{% url 'main' %}" class="cta-btn">LET'S START</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Menu</title>
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader-wrapper"><div class="loader"></div></div>
+
+  <div class="container">
+    <h1>Choose Your Emotion Input</h1>
+
+    <!-- Image Emotion -->
+    <div class="option-box">
+      <img src="{% static 'images/img.gif' %}" alt="Image Emotion GIF">
+      <h2>🖼️ Image Emotion</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="image">
+        <input type="file" name="image" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Real-Time Video -->
+    <div class="option-box">
+      <img src="{% static 'images/camera.gif' %}" alt="Real-Time Video GIF">
+      <h2>📹 Real-Time Video</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="realtime_video">
+        <div style="display:flex; align-items:center;justify-content:space-between; margin:0 50px">
+
+        <button type="submit">Start</button>
+        <h3 style="padding: 12px 25px;
+  margin-top: 15px;
+  background: red;
+  color: #000;
+  border: none;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">Press q to Exit</h3>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Audio Emotion -->
+    <div class="option-box">
+      <img src="{% static 'images/aud.gif' %}" alt="Audio Emotion GIF">
+      <h2>🎤 Audio Emotion</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div style="display:flex; align-items:center ; justify-content:space-between">
+
+        <input type="hidden" name="form_type" value="audio">
+
+        <input type="file" name="audio" onchange="previewAudio(event)" required>
+
+        <audio id="audio-player" controls style="display:none;"></audio>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Text Emotion -->
+    <div class="option-box">
+      <img src="{% static 'images/text.png' %}" alt="Text Emotion GIF">
+      <h2>📝 Text Emotion</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="text">
+        <input type="text" name="text" placeholder="Enter text" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    function previewAudio(event) {
+      const file = event.target.files[0];
+      const player = document.getElementById('audio-player');
+      player.src = URL.createObjectURL(file);
+      player.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+  overflow-x: hidden;
+  background: #001f4d;
+/*
+
+background: linear-gradient(135deg, #001f4d, #c0c0c0);
+ background: linear-gradient(135deg, #ff6ec4, #7873f5);
+ background: linear-gradient(135deg, #4b0082, #f5f5dc);
+ background: linear-gradient(135deg, #008080, #e0e0e0);
+*/
+
+
+
+}
+
+/* Loader */
+#loader-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ff6ec4;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+body.loaded #loader-wrapper {
+  display: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 3em;
+  font-weight: 700;
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Initial state */
+.option-box {
+  opacity: 0;
+  transform: translateY(-100px);
+  background: rgba(255, 255, 255, 0.2);
+
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+}
+
+/* Animate when loaded */
+body.loaded .option-box {
+  animation: slideDownFade 1s ease forwards;
+}
+
+/* Delayed animations for staggered effect */
+body.loaded .option-box:nth-of-type(1) {
+  animation-delay: 0.3s;
+}
+body.loaded .option-box:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+body.loaded .option-box:nth-of-type(3) {
+  animation-delay: 0.9s;
+}
+body.loaded .option-box:nth-of-type(4) {
+  animation-delay: 1.2s;
+}
+
+.option-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+
+}
+
+.option-box img {
+  max-width: 280px;
+  border-radius: 12px;
+  border: 4px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.option-box img:hover {
+  transform: scale(1.05);
+}
+
+form {
+  margin-top: 10px;
+}
+
+input[type="file"],
+input[type="text"] {
+  margin-top: 15px;
+  padding: 12px;
+  width: 60%;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 15px;
+  background: #ffe600;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #00ffe5;
+  color: #000;
+  transform: scale(1.1);
+}
+
+audio {
+  margin-top: 10px;
+}
+
+
+/* Animations*/ 
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
