@@ -3,9 +3,9 @@ services:
     name: emotion-detector
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn myproject.wsgi:application
+    startCommand: gunicorn Multimodel_Emotion.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: myproject.settings
+        value: Multimodel_Emotion.settings
       - key: PYTHON_VERSION
         value: 3.10
