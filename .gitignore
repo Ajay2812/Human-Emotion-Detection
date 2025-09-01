@@ -34,28 +34,9 @@ Thumbs.db
 *.lock
 *.bak
 
-# Model files tracked via Git LFS
 *.h5
 *.pt
 *.pkl
 *.ckpt
 
-# VS Code Jupyter notebooks metadata
-.ipynb_checkpoints/
 
-# TensorFlow cache and checkpoints
-checkpoint
-*.ckpt.*
-events.out.tfevents.*
-
-# Librosa temp files
-librosa_cache/
-
-# Optional - Ignore test reports
-htmlcov/
-coverage.xml
-*.cover
-*.coverage
-
-# If you use gunicorn locally
-gunicorn.pid
