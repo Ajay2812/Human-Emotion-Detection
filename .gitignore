@@ -34,9 +34,9 @@ Thumbs.db
 *.lock
 *.bak
 
-*.h5
+#*.h5
 *.pt
-*.pkl
+#*.pkl
 *.ckpt
 
 
