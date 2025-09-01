@@ -1,5 +1,8 @@
 '''
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15890fc1440fc64c45bce6650360a2a0756265f8
 import os
 import uuid
 import cv2
@@ -384,3 +387,8 @@ def result(request):
         "emotion": emotion,
         "image_url": image_url
     })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 15890fc1440fc64c45bce6650360a2a0756265f8

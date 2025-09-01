@@ -4,4 +4,5 @@ tensorflow
 opencv-python
 numpy
 librosa
+whitenoise
 tensorflow
